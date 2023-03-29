@@ -9,7 +9,6 @@ from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
 from fake_useragent import UserAgent
-ua = UserAgent
 
 
 client = gspread.service_account('gs_credentials.json')
