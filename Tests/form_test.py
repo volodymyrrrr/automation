@@ -23,7 +23,7 @@ else:
 
 with open("links.csv", "w", newline='') as file:
     writer = csv.writer(file, delimiter=";")
-    writer.writerow(("links", "tangiblee", "number", "popup", "Skip","useragent"))
+    writer.writerow(("links", "tangiblee", "number", "popup", "Skip", "useragent"))
 for urls in URLS:
     with open("links.csv", 'a', newline='') as file:
         writer = csv.writer(file, delimiter=";")
