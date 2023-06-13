@@ -55,7 +55,7 @@ def test_cicle(driver):
                 driver.maximize_window()
                 driver.delete_all_cookies()
                 driver.get(url)
-                time.sleep(10)
+                time.sleep(15)
                 try:
                     driver.find_element(By.XPATH, popup).click()
                     driver.execute_script("scrollBy(0,550);")
