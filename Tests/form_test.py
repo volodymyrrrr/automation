@@ -54,17 +54,20 @@ def test_cicle(driver):
                 driver = webdriver.Chrome(service=driver_service, options=options)
                 driver.maximize_window()
                 driver.delete_all_cookies()
-                driver.get(url)
-                time.sleep(15)
                 try:
-                    driver.find_element(By.XPATH, popup).click()
-                    driver.execute_script("scrollBy(0,550);")
+                    driver.get(url)
+                    time.sleep(15)
                     try:
-                        Wait(driver, timeout=5).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
-                        wb1.update_cell(row=r, col=8, value="Pass")
+                        driver.find_element(By.XPATH, popup).click()
+                        driver.execute_script("scrollBy(0,550);")
+                        try:
+                            Wait(driver, timeout=5).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
+                            wb1.update_cell(row=r, col=8, value="Pass")
+                        except:
+                            wb1.update_cell(row=r, col=8, value="false")
                     except:
-                        wb1.update_cell(row=r, col=8, value="false")
+                        wb1.update_cell(row=r, col=8, value="Popup_error")
                 except:
-                    wb1.update_cell(row=r, col=8, value="Popup_error")
+                    wb1.update_cell(row=r, col=8, value="Load_error")                
     driver.close()
 
