@@ -51,6 +51,8 @@ def test_cicle(driver):
                 options.add_argument("--incognito")
                 options.add_argument(useragent)
                 options.add_argument("--headless")
+                options.add_experimental_option("excludeSwitches", ["enable-automation"])
+                options.add_experimental_option('useAutomationExtension', False)
                 driver = webdriver.Chrome(service=driver_service, options=options)
                 driver.maximize_window()
                 driver.delete_all_cookies()
