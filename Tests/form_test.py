@@ -72,12 +72,25 @@ def test_cicle(driver):
                                 wbresult.add_rows(1)
                                 wbresult.update_cell(row=1, col=1, value=today)
                                 wbresult.update_cell(row=1, col=2, value="retailer")
+                                wbresult.update_cell(row=1, col=3, value="false")
                                 wb1.update_cell(row=r, col=9, value="false")
                         except:
+                            wbresult.add_rows(1)
+                            wbresult.update_cell(row=1, col=1, value=today)
+                            wbresult.update_cell(row=1, col=2, value="retailer")
+                            wbresult.update_cell(row=1, col=3, value="Popup_error")
                             wb1.update_cell(row=r, col=9, value="Popup_error")
                     except:
+                        wbresult.add_rows(1)
+                        wbresult.update_cell(row=1, col=1, value=today)
+                        wbresult.update_cell(row=1, col=2, value="retailer")
+                        wbresult.update_cell(row=1, col=3, value="Popup_error")
                         wb1.update_cell(row=r, col=9, value="Popup_error")
                 except:
+                    wbresult.add_rows(1)
+                    wbresult.update_cell(row=1, col=1, value=today)
+                    wbresult.update_cell(row=1, col=2, value="retailer")
+                    wbresult.update_cell(row=1, col=3, value="Load_error")
                     wb1.update_cell(row=r, col=9, value="Load_error")
     driver.close()
 
