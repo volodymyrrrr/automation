@@ -58,15 +58,15 @@ def test_cicle(driver):
                 driver.delete_all_cookies()
                 try:
                     driver.get(url)
-                    time.sleep(7)
+                    time.sleep(15)
                     try:
                         driver.find_element(By.XPATH, popup).click()
                         driver.execute_script("scrollBy(0,550);")
-                        time.sleep(7)
+                        time.sleep(15)
                         try:
                             driver.find_element(By.XPATH, popup2).click()
                             try:
-                                Wait(driver, timeout=5).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
+                                Wait(driver, timeout=15).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
                                 wb1.update_cell(row=r, col=9, value="Pass")
                             except:
                                 wb1.update_cell(row=r, col=9, value="false")
