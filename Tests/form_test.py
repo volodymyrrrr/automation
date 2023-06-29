@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
 
-today = datetime.date
+today = datetime.date.today()
 
 client = gspread.service_account('Tests/gs_credentials.json')
 working_sheet = client.open_by_url(
