@@ -1,4 +1,4 @@
-encoding="utf-8"
+encoding = "utf-8"
 import csv
 import os
 import time
@@ -9,8 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
-today = datetime.datetime.today()
 
+today = datetime.date
 
 client = gspread.service_account('Tests/gs_credentials.json')
 working_sheet = client.open_by_url(
@@ -93,4 +93,3 @@ def test_cicle(driver):
                     wbresult.update_cell(row=1, col=3, value="Load_error")
                     wb1.update_cell(row=r, col=9, value="Load_error")
     driver.close()
-
