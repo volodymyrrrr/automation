@@ -9,8 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
-today = datetime.datetime.date()
-from fake_useragent import UserAgent
+today = datetime.datetime.today()
 
 
 client = gspread.service_account('Tests/gs_credentials.json')
