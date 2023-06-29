@@ -4,14 +4,14 @@ import os
 import time
 import gspread
 import datetime
+from datetime import date
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
 
-today = datetime.date.today()
-
+today = date.today()
 client = gspread.service_account('Tests/gs_credentials.json')
 working_sheet = client.open_by_url(
     'https://docs.google.com/spreadsheets/d/1fRi9qAdb-E-xAY_jQiMdjjEsN1xZZdxK6865V-Ck6RE/edit#gid=0')
