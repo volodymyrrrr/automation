@@ -3,11 +3,13 @@ import csv
 import os
 import time
 import gspread
+import datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium import webdriver
 from selenium.webdriver.chrome.webdriver import Service
+today = datetime.datetime.date()
 from fake_useragent import UserAgent
 
 
@@ -15,6 +17,7 @@ client = gspread.service_account('Tests/gs_credentials.json')
 working_sheet = client.open_by_url(
     'https://docs.google.com/spreadsheets/d/1fRi9qAdb-E-xAY_jQiMdjjEsN1xZZdxK6865V-Ck6RE/edit#gid=0')
 wb1 = working_sheet.get_worksheet(0)
+wbresult = working_sheet.get_worksheet(3)
 URLS = wb1.get_values('B2:H500')
 if os.path.exists("links.csv"):
     os.remove("links.csv")
@@ -51,8 +54,6 @@ def test_cicle(driver):
                 options.add_argument("--incognito")
                 options.add_argument(useragent)
                 options.add_argument("--headless")
-                options.add_experimental_option("excludeSwitches", ["enable-automation"])
-                options.add_experimental_option('useAutomationExtension', False)
                 driver = webdriver.Chrome(service=driver_service, options=options)
                 driver.maximize_window()
                 driver.delete_all_cookies()
@@ -69,6 +70,9 @@ def test_cicle(driver):
                                 Wait(driver, timeout=5).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
                                 wb1.update_cell(row=r, col=9, value="Pass")
                             except:
+                                wbresult.add_rows(1)
+                                wbresult.update_cell(row=1, col=1, value=today)
+                                wbresult.update_cell(row=1, col=2, value="retailer")
                                 wb1.update_cell(row=r, col=9, value="false")
                         except:
                             wb1.update_cell(row=r, col=9, value="Popup_error")
