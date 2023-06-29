@@ -69,9 +69,9 @@ def test_cicle(driver):
                                 Wait(driver, timeout=15).until(EC.presence_of_element_located((By.CLASS_NAME, cta)))
                                 wb1.update_cell(row=r, col=9, value="Pass")
                             except:
-                                wbresult.add_rows(1)
-                                wbresult.update_cell(row=1, col=1, value=today)
-                                wbresult.update_cell(row=1, col=2, value="retailer")
+                                wbresult.insert_row(values=[today, "retailer", "false"])
+                                #bresult.update_cell(row=1, col=1, value=today)
+                                #wbresult.update_cell(row=1, col=2, value="retailer")
                                 wbresult.update_cell(row=1, col=3, value="false")
                                 wb1.update_cell(row=r, col=9, value="false")
                         except:
